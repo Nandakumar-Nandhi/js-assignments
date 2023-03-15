@@ -183,7 +183,7 @@ function getHead(arr, n) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
 function getTail(arr, n) {
-   return arr.splice(-n);
+   return arr.slice(-n);
 }
 
 
@@ -298,7 +298,7 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   return arr.sort((a, b) =>  b - a).splice(0, 3);
+   return arr.sort((a, b) =>  b - a).slice(0, 3);
 }
  
  
@@ -531,7 +531,8 @@ function group(array, keySelector, valueSelector) {
   array.map(element => {
     var key = keySelector(element);
     var value = valueSelector(element);
-    if (map.has(key)) map.get(key).push(value);else map.set(key, [value]);
+    if (map.has(key)) map.get(key).push(value);
+    else map.set(key, [value]);
   });
   return map;
 }
@@ -594,7 +595,9 @@ function swapHeadAndTail(arr) {
    var a = arr.length;
    var head = arr.splice(0, alen / 2);
    var tail;
-   if (a % 2 !== 0) tail = arr.splice(1, alen);else tail = arr.splice(0, alen);
+   if (a % 2 !== 0) 
+      tail = arr.splice(1, alen);
+   else tail = arr.splice(0, alen);
    return tail.concat(arr).concat(head);
 }
 
